@@ -1,0 +1,27 @@
+{
+  "name": "recipe",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.2.1",
+    "axios": "^1.4.0",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.1",
+    "primeflex": "^3.3.1",
+    "primeicons": "^6.0.1",
+    "primevue": "^3.31.0",
+    "vee-validate": "^4.10.8",
+    "vite-plugin-mix": "^0.4.0",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.2.3",
+    "vite": "^4.4.5"
+  }
+}
