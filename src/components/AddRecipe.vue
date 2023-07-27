@@ -23,53 +23,44 @@ const { value: fieldTitleValue, errorMessage: fieldTitleError } = useField(
 const onSubmit = handleSubmit(async (values) => {
     axios.post('/recipe', {
         title: values.title,
-        ingredients: ingredients.value
+        ingredients: ingredients
     })
 })
+
+const remove = (v) => {
+    ingredients.value.splice(ingredients.value.indexOf(v), 1)
+}
 </script>
 
 <template>
-    <Button
-        label="Add Recipe"
-        severity="success"
-        class="p-button-raised"
-        @click="formVisible = true"
-    />
-    <Dialog
-        v-model:visible="formVisible"
-        :draggable="false"
-        :modal="true"
-        header="Add Recipe"
-        >
+    <Button label="Add Recipe" severity="success" class="p-button-raised" @click="formVisible = true" />
+    <Dialog v-model:visible="formVisible" :draggable="false" :modal="true" header="Add Recipe">
         <form ref="form" @submit="onSubmit" class="p-fluid pt-4">
             <div class="field">
                 <span class="p-float-label">
-                  <InputText
-                    id="title"
-                    :class="{ 'p-invalid': fieldTitleError }"
-                    aria-describedby="title-error"
-                    v-model="fieldTitleValue"
-                  />
-                  <label for="title">Title</label>
+                    <InputText id="title" :class="{ 'p-invalid': fieldTitleError }" aria-describedby="title-error"
+                        v-model="fieldTitleValue" />
+                    <label for="title">Title</label>
                 </span>
                 <small class="p-error" id="title-error">{{
                     fieldTitleError || '&nbsp;'
                 }}</small>
-              </div>
-              <Listbox class="field" :options="ingredients">
+            </div>
+            <DataTable resizableColumns columnResizeMode="fit" class="field p-datatable-sm" :value="ingredients">
                 <template #header>
-                        <AddIngredients v-model:modelValue="ingredients" />
+                    <AddIngredients v-model:modelValue="ingredients" />
                 </template>
-                    <template #option="slotProps">
-                        <div class="grid">
-                            <span class="col font-bold">{{ slotProps.option.title }}</span>
-                            <span class="col">{{ slotProps.option.ammount }}</span>
-                        </div>
+                <Column field="title" header="Title"></Column>
+                <Column field="ammount" header="Ammount"></Column>
+                <Column>
+                    <template #body="slotProps">
+                        <Button severity="danger" icon="pi pi-times" @click="remove(slotProps)" />
                     </template>
-                </Listbox>
-               <div class="field">
+                </Column>
+            </DataTable>
+            <div class="field gap-2">
                 <Button type="submit" label="Submit" />
-              </div>
+            </div>
         </form>
     </Dialog>
 </template>
