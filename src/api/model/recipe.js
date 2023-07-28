@@ -5,7 +5,7 @@ const recipeSchema = new Schema({
     title: String,
     ingredients: [{
         title: String,
-        ammount: String
+        amount: String
     }]
     }, {
     toJSON: {

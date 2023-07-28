@@ -51,7 +51,7 @@ const remove = (v) => {
                     <AddIngredients v-model:modelValue="ingredients" />
                 </template>
                 <Column field="title" header="Title"></Column>
-                <Column field="ammount" header="Ammount"></Column>
+                <Column field="amount" header="Amount"></Column>
                 <Column>
                     <template #body="slotProps">
                         <Button severity="danger" icon="pi pi-times" @click="remove(slotProps)" />

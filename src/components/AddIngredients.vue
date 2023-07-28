@@ -17,11 +17,11 @@ const { value: fieldTitleValue, errorMessage: fieldTitleError } = useField(
         return true
     }
 )
-const { value: fieldAmmountValue, errorMessage: fieldAmmountError } = useField(
-    'ammount',
+const { value: fieldAmountValue, errorMessage: fieldAmountError } = useField(
+    'amount',
     (v) => {
         if (!v) {
-            return 'Ammount is required.'
+            return 'Amount is required.'
         }
         return true
     }
@@ -39,8 +39,8 @@ const onSubmit = handleSubmit((values) => {
         <div class="field p-inputgroup">
             <InputText id="ingredientTitle" placeholder="Ingredient" v-model="fieldTitleValue"
                 :class="{ 'p-invalid': fieldTitleError }" aria-describedby="title-error" />
-            <InputText id="ingredientAmmount" placeholder="Ammount" v-model="fieldAmmountValue"
-                :class="{ 'p-invalid': fieldAmmountError }" aria-describedby="ammount-error" />
+            <InputText id="ingredientAmount" placeholder="Amount" v-model="fieldAmountValue"
+                :class="{ 'p-invalid': fieldAmountError }" aria-describedby="amount-error" />
             <Button severity="success" icon="pi pi-plus" aria-label="Add" type="submit" />
             <Button severity="danger" icon="pi pi-times" aria-label="Add" type="reset" />
         </div>
@@ -48,8 +48,8 @@ const onSubmit = handleSubmit((values) => {
             <small class="p-error" id="title-error">{{
                 fieldTitleError || '&nbsp;'
             }}</small>
-            <small class="p-error" id="ammount-error">{{
-                fieldAmmountError || '&nbsp;'
+            <small class="p-error" id="amount-error">{{
+                fieldAmountError || '&nbsp;'
             }}</small>
         </div>
     </form>
